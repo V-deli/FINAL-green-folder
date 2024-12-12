@@ -117,32 +117,32 @@ void keyPressed() {
 }
    
 void resetGame() {
-  for (GridSquare square : squares) {
-  square.activated = false;
+  for (GridSquare square : squares) { // loop through each square
+  square.activated = false;  // deactivate each square
   }
-  activatedSquares.clear();
-  timer=5;
-  timerRunning=true;
-  gameOver=false;
-  gameWon=false;
-  movingEllipse.position= new PVector(50,50);
+  activatedSquares.clear();  // clear the list of activated squares
+  timer=5; //reset timer to 5 secs
+  timerRunning=true; //restart
+  gameOver=false; //game not over
+  gameWon=false; //game has not been won
+  movingEllipse.position= new PVector(50,50); //reset ellipse position back to the first spot of 50, 50
 }
 void displayMessage(String message){
-   fill(0);
-   textSize(32);
-   textAlign(CENTER, CENTER);
-   text(message, width / 2, height / 2);
+   fill(0); //black colour
+   textSize(32); //32 size
+   textAlign(CENTER, CENTER); //centered
+   text(message, width / 2, height / 2); //center of Screen
 }
-
+// "Below" helper function to check if a square is already activated
 boolean isSquareActivated(GridSquare square) {
-for (GridSquare activatedSquare : activatedSquares) {
- if (activatedSquare == square) {
-    return true;
+for (GridSquare activatedSquare : activatedSquares) { //lopp through activated squares
+ if (activatedSquare == square) { //if it is found in the activated list...
+    return true; //then true
  }
 }
-return false;
+return false; //if not the case, then false
 }
-
+// check if the moving ellipse is in a square
 boolean movingEllipseIsInSquare(PVector ellipsePos, GridSquare square) {
   return ellipsePos.x > square.position.x && ellipsePos.x < square.position.x + square.size &&
          ellipsePos.y > square.position.y && ellipsePos.y < square.position.y + square.size;
